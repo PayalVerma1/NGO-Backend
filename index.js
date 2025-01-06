@@ -4,9 +4,12 @@ const User=require("./Routes/blood_portal");
 const bodyParser = require("body-parser");
 const certificateRoutes = require("./Routes/certificate.js");
 const connectdb = require("./utilis/db");
+
+const cors = require("cors");
 const app=express();
 const PORT=8000;
 connectdb();
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
