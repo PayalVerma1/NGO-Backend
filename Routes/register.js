@@ -9,7 +9,6 @@ try {
         console.error("Validation error: Missing required fields:", req.body);
         return res.status(400).json({ message: 'All required fields must be filled' });
       }
-      // Create and save the market data
       const result = await user_1.create({
         name,
         email,
@@ -27,7 +26,6 @@ try {
         suggestions,
       });
       console.log(result);
-      // Send success response
       res.status(201).json({
         message: "User created successfully",
         data: result,
@@ -35,8 +33,6 @@ try {
       });
     } catch (error) {
       console.error("Error creating user:", error);
-  
-      // Send error response
       res.status(500).json({
         message: "Failed to user",
         error: error.message,
