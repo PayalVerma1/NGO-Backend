@@ -13,11 +13,18 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
+app.get("/", (req, res) => {
+  res.send("API is running");
+});
 app.use("/certificate",certificateRoutes);
 app.use("/", registerRoute);
 app.use("/blood",User );
 
-app.listen(PORT, () => {
+
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
   });
- 
+}
+
+module.exports = app;
